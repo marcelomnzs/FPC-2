@@ -94,17 +94,6 @@ class BinaryTree:
             # Prints the data of the right son
             self.preOrderTransverse(pointer.getRightSon())
 
-    # Function that insert a new node into the tree
-    def insert(self, node: Node):
-
-        # Verifies if the tree is empty, if it is, then the new node becomes the root node
-        if self.root == None:
-            self.root = node
-
-        # Verifies if the given node is bigger than the root
-
-
-
 # Main program
 
 node1 = Node(40)
