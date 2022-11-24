@@ -73,32 +73,56 @@ class Node:
 class BinaryTree:
 
     # Creates a binary tree (by default, a binary tree is created empty)
-    def __init__(self):
-        self.root = None
+    def __init__(self, node: Node):
+        self.root = node
 
     # Function that recursively prints the whole tree (Preorder)
-    def preOrderTransverse(self, pointer):
+    def preOrderTransverse(self, pointer: Node):
 
         # Verifies if the tree is empty
         if self.root == None:
             return 'The tree is empty!'
 
-        # Prints the data of the pointer (also called root) node
-        print(pointer.getData())
+        # Verifies if there's a son
+        if pointer:
+            # Prints the data of the pointer (also called root) node
+            print(pointer.getData())
 
-        # Prints the data of the left son
-        self.preOrderTransverse(pointer.getLeftSon())
+            # Prints the data of the left son
+            self.preOrderTransverse(pointer.getLeftSon())
 
-        # Prints the data of the right son
-        self.preOrderTransverse(pointer.getRightSon())
+            # Prints the data of the right son
+            self.preOrderTransverse(pointer.getRightSon())
 
+    # Function that insert a new node into the tree
+    def insert(self, node: Node):
+
+        # Verifies if the tree is empty, if it is, then the new node becomes the root node
+        if self.root == None:
+            self.root = node
+
+        # Verifies if the given node is bigger than the root
 
 
 
 # Main program
-unorderedList = [14,15,4,9,15]
 
-node1 = Node(5)
+node1 = Node(40)
 
-# binaryTree = BinaryTree()
-# binaryTree.insert(node1)
+# Creates a binary tree and puts 'node1' as it's root node
+tree = BinaryTree(node1)
+
+# Creates two more nodes as 'node1' left and right sons
+node1.leftSon = Node(20)
+node1.rightSon = Node(60)
+
+node1.getLeftSon().leftSon = Node(50)
+node1.getRightSon().rightSon = Node(70)
+
+node1.getLeftSon().leftSon = Node(10)
+node1.getLeftSon().rightSon = Node(30)
+
+# print(node1.getData())
+# print('Filho esquerdo:', node1.getLeftSon().getData())
+# print('Filho direito:', node1.getRightSon().getData())
+tree.preOrderTransverse(node1)
